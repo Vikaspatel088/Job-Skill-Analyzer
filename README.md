@@ -1,6 +1,6 @@
-# Job Skill Analyzer — Career Intelligence Platform
+# Job Skill Analyzer
 
-A production-grade, deterministic rule-based NLP tool and modern web application engineered to extract technical skills from job descriptions, normalize aliases into canonical representations, categorize competencies, perform objective candidate skill-gap analysis, and evaluate explainable learning priorities.
+Job Skill Analyzer is a deterministic, rule-based NLP and information-extraction application that turns job descriptions into structured technical skills, candidate gaps, coverage, and explainable priorities.
 
 ---
 
@@ -8,7 +8,29 @@ A production-grade, deterministic rule-based NLP tool and modern web application
 
 Modern technical job descriptions are packed with diverse, evolving requirements—from programming languages and cloud platforms to container orchestrators and development utilities. Candidates and recruiters frequently struggle to parse dense job descriptions accurately and objectively evaluate alignment.
 
-**Job Skill Analyzer** provides a high-reliability, zero-hallucination Python engine coupled with an editorial, high-end React web application. Rather than relying on black-box heuristics or unpredictable LLM calls for fundamental keyword extraction, it executes a rigorous rule-based text processing pipeline with custom boundary detection, greedy span disambiguation, and explainable prioritization.
+The Python engine recognizes known technologies with boundary-aware matching, normalizes aliases, categorizes skills, and compares an optional candidate profile. FastAPI exposes that existing engine to a React and TypeScript frontend. Analysis is rule-based; the application does not use machine learning or an LLM.
+
+## Architecture
+
+```mermaid
+flowchart TD
+       UI[React and Vite] --> API[FastAPI]
+       API --> Engine[Existing JobSkillAnalyzer]
+       Engine --> Extract[Skill extraction]
+       Extract --> Normalize[Normalization]
+       Normalize --> Categorize[Categorization]
+       Categorize --> Gaps[Candidate matching and gap analysis]
+       Gaps --> Priority[Explainable priority analysis]
+       Priority --> JSON[JSON response]
+       JSON --> UI
+```
+
+## Tech Stack
+
+- **Backend:** Python, FastAPI, Pydantic, Uvicorn
+- **Frontend:** React, TypeScript, Vite, Tailwind CSS
+- **Testing:** pytest, FastAPI TestClient, Oxlint
+- **Deployment:** Multi-stage Dockerfile and Render Blueprint
 
 ---
 
@@ -92,7 +114,7 @@ job-skill-analyzer/
 │   ├── public/                # Local assets (hero-bg.jpg)
 │   ├── tailwind.config.js     # Design system configuration
 │   └── vite.config.ts
-├── tests/                     # 97 Automated Unit, Edge & API Tests
+├── tests/                     # Python unit, edge-case, and API tests
 │   ├── test_api.py            # FastAPI endpoint tests
 │   ├── test_categorization.py # Taxonomy category tests
 │   ├── test_cli.py            # CLI argument and output tests
@@ -105,13 +127,15 @@ job-skill-analyzer/
 ├── examples/
 │   ├── sample_job_description.txt
 │   └── sample_candidate_skills.txt
+├── .github/workflows/ci.yml   # Python tests and frontend production build
 ├── Dockerfile                 # Multi-stage single-service build
-├── render.yaml                # Render deployment blueprint
-└── .github/workflows/ci.yml   # Python tests and frontend production build
+├── .dockerignore
+├── .gitignore
+├── LICENSE
 ├── pyproject.toml
+├── render.yaml                # Render deployment blueprint
 ├── requirements.txt
-├── requirements-dev.txt
-└── LICENSE
+└── requirements-dev.txt
 ```
 
 ---
