@@ -1,0 +1,5 @@
+# Core Engine: Relies purely on Python standard library modules.
+# Web API & UI Service:
+fastapi>=0.110.0
+uvicorn>=0.28.0
+pydantic>=2.6.0

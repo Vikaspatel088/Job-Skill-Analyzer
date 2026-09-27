@@ -1,0 +1,25 @@
+Senior Backend & Platform Engineer
+
+About the Role:
+We are seeking an experienced Senior Backend Engineer to join our Platform Architecture team.
+In this role, you will design, scale, and maintain high-throughput distributed microservices.
+
+Core Responsibilities:
+- Design robust, asynchronous backend services using Python and FastAPI.
+- Architect and optimize relational data models in PostgreSQL, ensuring optimal indexing and query performance.
+- Containerize applications using Docker and orchestrate deployments via Kubernetes clusters.
+- Manage cloud infrastructure on AWS, leveraging EC2, S3, and Lambda serverless functions.
+- Collaborate with frontend teams utilizing React and TypeScript to build seamless REST API interfaces.
+- Maintain continuous integration and continuous deployment pipelines using GitHub Actions and CI/CD best practices.
+- Leverage Redis for low-latency distributed caching and session management.
+- Promote engineering excellence, code reviews, and version control using Git.
+
+Qualifications & Technical Requirements:
+- 4+ years of professional backend engineering experience with Python.
+- Proven expertise with web frameworks such as FastAPI, Django, or Flask.
+- Strong proficiency with PostgreSQL or MySQL relational databases.
+- Practical experience with cloud architecture on AWS or Google Cloud.
+- Hands-on experience with Docker containerization and Kubernetes.
+- Experience building and consuming REST API and GraphQL endpoints.
+- Solid understanding of Git version control and modern CI/CD automation.
+- Familiarity with Machine Learning workflows or data analysis libraries like Pandas and NumPy is a plus.
